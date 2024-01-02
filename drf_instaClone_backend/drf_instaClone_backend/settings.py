@@ -41,10 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     #third party
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
+
+    #registration
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',    
+    'dj_rest_auth.registration',   
+    'django.contrib.sites',     
 
     #inline
     'core.apps.CoreConfig'
@@ -56,6 +64,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # Added - the account middleware:
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -140,4 +150,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ]
+}
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = (True,)  
+
+REST_AUTH = {
+    'SESSION_LOGIN': False
 }
