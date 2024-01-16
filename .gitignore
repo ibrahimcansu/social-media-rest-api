@@ -3,6 +3,7 @@
 
 
 clients/
+uploads/
 
 ### Django ###
 *.log
